@@ -24,7 +24,7 @@ namespace HomeTask3
             */
 
             int input = Convert.ToInt32(Console.ReadLine());
-            int[] itnegerArray = new int[input];
+            int[] integerArray = new int[input];
             var random = new Random();
             int even = 0;
             int evenUpper = 0;
@@ -35,20 +35,20 @@ namespace HomeTask3
 
             for (int i = 0; i < input; i++)
             {
-                itnegerArray[i] = random.Next(1, 27);
+                integerArray[i] = random.Next(1, 27);
 
-                if (itnegerArray[i] == 1 || itnegerArray[i] == 5 || itnegerArray[i] == 9)
+                if (integerArray[i] == 1 || integerArray[i] == 5 || integerArray[i] == 9)
                 {
-                    itnegerArray[i] = itnegerArray[i] - 32;
+                    integerArray[i] = integerArray[i] - 32;
                     unevenUpper++;
                 }
-                else if (itnegerArray[i] == 4 || itnegerArray[i] == 8 || itnegerArray[i] == 10)
+                else if (integerArray[i] == 4 || integerArray[i] == 8 || integerArray[i] == 10)
                 {
-                    itnegerArray[i] = itnegerArray[i] - 32;
+                    integerArray[i] = integerArray[i] - 32;
                     evenUpper++;
                 }
 
-                if (itnegerArray[i] % 2 == 0)
+                if (integerArray[i] % 2 == 0)
                 {
                     char[] tmp = new char[even + 1];
                     for (int j = 0; j < evenIntegers.Length; j++)
@@ -56,7 +56,7 @@ namespace HomeTask3
                         tmp[j] = evenIntegers[j];
                     }
 
-                    tmp[even] = Convert.ToChar(itnegerArray[i] + 96);
+                    tmp[even] = Convert.ToChar(integerArray[i] + 96);
                     evenIntegers = tmp;
                     even++;
                 }
@@ -68,7 +68,7 @@ namespace HomeTask3
                         tmp[j] = unevenIntegers[j];
                     }
 
-                    tmp[uneven] = Convert.ToChar(itnegerArray[i] + 96);
+                    tmp[uneven] = Convert.ToChar(integerArray[i] + 96);
                     unevenIntegers = tmp;
                     uneven++;
                 }
