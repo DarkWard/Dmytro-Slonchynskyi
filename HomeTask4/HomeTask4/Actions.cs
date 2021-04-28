@@ -12,40 +12,27 @@ using System;
 
 namespace HomeTask4
 {
-    public class Actions
+    public static class Actions
     {
         public static Result FirstMethod()
         {
-            var res = new Result();
-            res.Status = true;
-            Console.ForegroundColor = ConsoleColor.Green;
+            Logger.Instance.Log(LogLevel.Information, "Start method: FirstMethod");
 
-            Logger.Instance.Log("Start method: FirstMethod", "Info");
-
-            return res;
+            return new Result { Status = true };
         }
 
         public static Result SecondMethod()
         {
-            var res = new Result();
-            res.Status = true;
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Logger.Instance.Log(LogLevel.Warning, "Skipped logic in method: SecondMethod");
 
-            Logger.Instance.Log("Skipped logic in method: SecondMethod", "Warning");
-
-            return new Result();
+            return new Result { Status = true };
         }
 
         public static Result ThirdMethod()
         {
-            var res = new Result();
-            res.Status = false;
-            res.Message = "I broke a logic";
-            Console.ForegroundColor = ConsoleColor.Red;
+            Logger.Instance.Log(LogLevel.Error, "ThirdMethod");
 
-            Logger.Instance.Log("ThirdMethod", "Error");
-
-            return res;
+            return new Result { Status = false, Message = "I broke a logic" };
         }
     }
 }

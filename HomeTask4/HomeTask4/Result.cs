@@ -12,11 +12,6 @@ namespace HomeTask4
 {
     public class Result
     {
-        public Result()
-        {
-            Status = true;
-        }
-
         public bool Status { get; set; }
 
         public string Message { get; set; }

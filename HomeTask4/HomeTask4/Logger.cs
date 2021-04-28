@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Text;
 
 /*
@@ -17,11 +16,10 @@ namespace HomeTask4
     {
         private static StringBuilder _result;
         private static Logger _logger;
-        private static DateTime _time = DateTime.Now;
 
         private Logger()
         {
-            _result = new StringBuilder("Log start:");
+            _result = new StringBuilder("Log start:\n");
         }
 
         public static Logger Instance
@@ -37,16 +35,16 @@ namespace HomeTask4
             }
         }
 
-        public void Log(string message, string type)
+        public void Log(LogLevel type, string message)
         {
-            string str = $"{{{_time.ToLongTimeString()}}}: {{{type}}}: {{{message}}}";
+            string str = $"{{{DateTime.UtcNow}}}: {{{type}}}: {{{message}}}";
             Console.WriteLine(str);
-            _result.Append(str);
+            _result.AppendLine(str);
         }
 
-        public void WriteToFile()
+        public string GetAllLogs()
         {
-            File.WriteAllText("log.txt", _result.ToString());
+            return _result.ToString();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 /*
  * Создать в отдельном файле класс Starter с методом Run
@@ -13,38 +14,39 @@
 
 namespace HomeTask4
 {
-    public class Starter
+    public static class Starter
     {
         public static void Run()
         {
+            var random = new Random();
             for (int i = 0; i < 100; i++)
             {
-                bool status = true;
-                var random = new Random().Next(1, 4);
-                Result res = new Result();
+                var randomValue = random.Next(1, 4);
 
-                if (random == 1)
+                switch (randomValue)
                 {
-                    res = Actions.FirstMethod();
-                    status = res.Status;
-                }
-                else if (random == 2)
-                {
-                    res = Actions.SecondMethod();
-                    status = res.Status;
-                }
-                else if (random == 3)
-                {
-                    res = Actions.ThirdMethod();
-                    status = res.Status;
-                }
-
-                if (!status)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Logger.Instance.Log($"Action failed by a reason: {res.Message}", "Error");
+                    case 1:
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Actions.FirstMethod();
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    case 2:
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Actions.SecondMethod();
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    case 3:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        var res = Actions.ThirdMethod();
+                        Logger.Instance.Log(LogLevel.Error, $"Action failed by a reason: {res.Message}");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    default:
+                        throw new ArgumentException("Random value is out of the range");
                 }
             }
+
+            File.WriteAllText("log.txt", Logger.Instance.GetAllLogs());
         }
     }
 }

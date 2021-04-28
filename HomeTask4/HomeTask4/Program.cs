@@ -10,7 +10,6 @@ namespace HomeTask4
         public static void Main(string[] args)
         {
             Starter.Run();
-            Logger.Instance.WriteToFile();
         }
     }
 }
