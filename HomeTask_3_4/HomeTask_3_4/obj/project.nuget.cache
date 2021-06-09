@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Q4wYvvfXeXEsn1qEyXTq2cHQdl4QU4VQyOIla6WVHdK8XGcom+qon0v46AAUXAljwN8D0dkGiFI6OF1R/F7g9A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\slonc\\source\\repos\\HomeTask_3_4\\HomeTask_3_4\\HomeTask_3_4.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\slonc\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.66\\stylecop.analyzers.1.2.0-beta.66.nupkg.sha512",
+    "C:\\Users\\slonc\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.66\\stylecop.analyzers.unstable.1.2.0.66.nupkg.sha512"
+  ],
+  "logs": []
+}
