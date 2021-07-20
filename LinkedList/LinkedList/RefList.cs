@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace LinkedList
 {
@@ -17,7 +17,7 @@ namespace LinkedList
         {
             get
             {
-                if (index < 0)
+                if (index < 0 || index > _count - 1)
                 {
                     throw new ArgumentOutOfRangeException();
                 }
@@ -33,6 +33,17 @@ namespace LinkedList
 
             set
             {
+                var add = new Node(value);
+                var current = _head;
+
+                for (int i = 0; i < index - 1; i++)
+                {
+                    current = current.Next;
+                }
+
+                add.Next = current.Next;
+                current.Next = add;
+                _count++;
             }
         }
 
@@ -133,16 +144,11 @@ namespace LinkedList
 
         public void DeleteByValue(object value)
         {
-            while (true)
+            for (int i = 0; i < _count - 1; i++)
             {
-                int index = 0;
-                index = IndexOf(value);
+                int index = IndexOf(value);
 
-                if (index == -1)
-                {
-                    break;
-                }
-                else
+                if (index != -1)
                 {
                     DeleteByIndex(index);
                 }
